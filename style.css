@@ -1,59 +1,59 @@
 body {
-    font-family: 'Zen Maru Gothic', sans-serif;
-    background-color: #f4ece1;
-    color: #332c2b;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    transition: background-color 0.8s ease;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  background-color: #f4ece1;
+  color: #332c2b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  transition: background-color 0.8s ease;
 }
 
 .container {
-    background: rgba(255, 253, 250, 0.95);
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    max-width: 650px;
-    text-align: center;
-    border-top: 8px solid #bc4123;
+  background: rgba(255, 253, 250, 0.95);
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 650px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  border-top: 8px solid #bc4123;
 }
 
 #storyImage {
-    width: 100%;
-    max-height: 350px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    border: 3px solid #d8cfc0;
+  width: 100%;
+  max-height: 350px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  border: 3px solid #d8cfc0;
 }
 
 #storyText {
-    font-size: 1.25rem;
-    line-height: 1.6;
-    margin-bottom: 25px;
-    min-height: 100px;
-    padding: 10px;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  min-height: 90px;
 }
 
 #userInput {
-    padding: 12px;
-    width: 80%;
-    border: 2px solid #d8cfc0;
-    border-radius: 5px;
-    font-size: 1.1rem;
-    text-align: center;
+  padding: 12px;
+  width: 80%;
+  font-size: 1.1rem;
+  border-radius: 6px;
+  border: 2px solid #d8cfc0;
+  text-align: center;
 }
 
 #userInput:focus {
-    border-color: #bc4123;
-    outline: none;
+  border-color: #bc4123;
+  outline: none;
 }
 
 #hint {
-    font-size: 0.9rem;
-    color: #666;
-    margin-top: 15px;
-    font-weight: bold;
+  margin-top: 12px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #666;
 }
+
