@@ -5,6 +5,7 @@ const userInput = document.getElementById("userInput");
 const storyImage = document.getElementById("storyImage");
 const hint = document.getElementById("hint");
 
+// Function that updates the DOM and Styles (Requirement)
 function updatePage(text, imgUrl, nextHint, bodyColor) {
     storyText.innerText = text;
     storyImage.src = imgUrl;
@@ -12,6 +13,7 @@ function updatePage(text, imgUrl, nextHint, bodyColor) {
     document.body.style.backgroundColor = bodyColor;
 }
 
+// Function returning a value (Requirement)
 function getCleanInput() {
     return userInput.value.toLowerCase().trim();
 }
@@ -25,7 +27,7 @@ userInput.addEventListener("keypress", function(event) {
 });
 
 function handleStory(choice) {
-    // --- STARTING PATH ---
+    // 1. Initial Choice
     if (stage === "start") {
         if (choice === "left") {
             stage = "village";
@@ -38,19 +40,19 @@ function handleStory(choice) {
         } else if (choice === "right") {
             stage = "fuji_road";
             updatePage(
-                "The road continues toward the mountain. The air gets colder. Do you WALK faster or REST?",
+                "The road continues toward the mountain. The air grows quiet. Do you WALK or REST?",
                 "https://i.pinimg.com/originals/7a/cc/19/7acc19eaa9224542bc60968ca3722e24.jpg",
                 "walk / rest",
                 "#e1f1f5"
             );
         }
 
-    // --- VILLAGE SUB-BRANCH ---
+    // 2. Village / Friend Branch
     } else if (stage === "village") {
         if (choice === "visit") {
             stage = "inside_house";
             updatePage(
-                "Your friend welcomes you! Inside, they are preparing New Year celebrations. Do you play traditional GAMES or go back OUTSIDE?",
+                "Your friend welcomes you warmly! Inside, they are preparing New Year celebrations. Do you play traditional GAMES or go back OUTSIDE?",
                 "https://www.koryoya.com/akiya/list/yabu-1.jpg",
                 "games / outside",
                 "#fdf2e9"
@@ -58,39 +60,43 @@ function handleStory(choice) {
         } else if (choice === "continue") {
             stage = "fuji_view";
             updatePage(
-                "You bypass the village and reach a clearing. Mount Fuji stands before you!",
+                "You bypass the village and finally reach a clearing. Mount Fuji stands before you!",
                 "https://japanupclose.web-japan.org/files/100462016.jpeg",
                 "restart",
                 "#fff"
             );
         }
 
+    // 3. Inside House Branch (Using Switch Statement Requirement)
     } else if (stage === "inside_house") {
-        if (choice === "games") {
-            updatePage(
-                "You spend the afternoon playing Hanetsuki and Karuta! It's a wonderful celebration.",
-                "https://savvytokyo.com/traditional-games-to-celebrate-the-new-year-in-japan/",
-                "restart",
-                "#f9d5e5"
-            );
-            stage = "end";
-        } else if (choice === "outside") {
-            stage = "start"; // Loop back to beginning
-            handleStory("restart");
+        switch(choice) {
+            case "games":
+                stage = "end";
+                updatePage(
+                    "You spend the afternoon playing Hanetsuki and Karuta! It is a wonderful way to celebrate.",
+                    "https://savvytokyo.com/traditional-games-to-celebrate-the-new-year-in-japan/",
+                    "restart",
+                    "#f9d5e5"
+                );
+                break;
+            case "outside":
+                stage = "start";
+                handleStory("restart");
+                break;
         }
 
-    // --- MOUNT FUJI SUB-BRANCH ---
+    // 4. Fuji Road Branch
     } else if (stage === "fuji_road") {
         if (choice === "rest") {
             stage = "dog_encounter";
             updatePage(
-                "You look over at a nearby bench to rest and see a friendly dog. You suddenly recognize that its your friends dog!",
-                "https://scontent-sea1-1.xx.fbcdn.net/v/t39.30808-6/241535451_3796362537093567_6403070497554558223_n.jpg?_nc_cat=106&ccb=1-7&_ea&_nc_sid=5f2048&_nc_ohc=F8H7K6M7_WcAX9W5S7_&_nc_ht=scontent-sea1-1.xx&oh=00_AfC2D6k0k7r5v5z2...", // Direct image link from FB group post
+                "You look over at a nearby bench to rest and see a friendly dog. You suddenly recognize that its your friends dog! Do you SIT and pet him or RETURN to the friends house with him?",
+                "https://thumbs.dreamstime.com/b/shiba-inu-dog-sitting-bench-japanese-garden-188613437.jpg",
                 "sit / return",
                 "#e8f4ea"
             );
         } else if (choice === "walk") {
-            stage = "fuji_view";
+            stage = "end";
             updatePage(
                 "You have arrived at the Tori Gate of Mount Fuji, enjoy the rest of your visit!",
                 "https://japanupclose.web-japan.org/files/100462016.jpeg",
@@ -99,22 +105,36 @@ function handleStory(choice) {
             );
         }
 
+    // 5. Dog Interaction Branch
     } else if (stage === "dog_encounter") {
         if (choice === "sit") {
-            updatePage("You sit and pet the dog. He is very soft and happy to see you.", "https://scontent-sea1-1.xx...", "restart", "#f4ece1");
             stage = "end";
+            updatePage("The dog wags its tail as you pet it. You feel completely relaxed in nature.", "https://thumbs.dreamstime.com/b/shiba-inu-dog-sitting-bench-japanese-garden-188613437.jpg", "restart", "#f4ece1");
         } else if (choice === "return") {
-            stage = "inside_house"; // Takes them to the village house branch
+            // Jumps to the friend's house stage
+            stage = "inside_house";
             handleStory("visit");
         }
 
-    // --- RESTART LOGIC ---
+    // 6. Restart Logic (Loop Requirement)
     } else if (choice === "restart") {
+        // Demonstrative loop to reset UI brightness
+        let uiElements = [storyText, storyImage, userInput];
+        let i = 0;
+        while(i < uiElements.length) {
+            uiElements[i].style.filter = "brightness(100%)";
+            i++;
+        }
+
         stage = "start";
         updatePage(
-            "You are back on the dirt road. Do you go LEFT or RIGHT?",
+            "You are back on the dirt road. The sun is rising. Do you go LEFT or RIGHT?",
             "https://png.pngtree.com/thumb_back/fh260/background/20230518/pngtree-an-autumnseason-rural-road-in-japan-image_2525851.jpg",
             "left / right",
+            "#f4ece1"
+        );
+    }
+}
             "#f4ece1"
         );
     }
