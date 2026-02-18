@@ -120,7 +120,7 @@ function handleStory(choice) {
       stage = "dog";
       updatePage(
         "You sit on a bench and meet a friendly dog—it belongs to your friend! Do you SIT with him or RETURN to the house?",
-        "https://thumbs.dreamstime.com/b/shiba-inu-dog-sitting-bench-japanese-garden-188613437.jpg",
+        "https://media.istockphoto.com/id/1463799736/photo/portrait-of-shiba-inu-dog-lying-down-on-the-bench.jpg?s=170667a&w=0&k=20&c=iGYckmjX-z9s-Lt4MihUH2mOmNAfG9wO_kt6S1Pw9nU=",
         "sit / return",
         "#e8f4ea"
       );
@@ -140,7 +140,7 @@ function handleStory(choice) {
       stage = "end";
       updatePage(
         "The dog wags its tail as you pet it. You feel completely at peace.",
-        "https://thumbs.dreamstime.com/b/shiba-inu-dog-sitting-bench-japanese-garden-188613437.jpg",
+        "https://media.istockphoto.com/id/1463799736/photo/portrait-of-shiba-inu-dog-lying-down-on-the-bench.jpg?s=170667a&w=0&k=20&c=iGYckmjX-z9s-Lt4MihUH2mOmNAfG9wO_kt6S1Pw9nU=",
         "restart",
         "#f4ece1"
       );
