@@ -102,7 +102,7 @@ function handleStory(choice) {
         stage = "end";
         updatePage(
           "You spend the afternoon playing Hanetsuki and Karuta. Laughter fills the home.",
-          "https://savvytokyo.com/traditional-games-to-celebrate-the-new-year-in-japan/",
+          "https://as1.ftcdn.net/v2/jpg/01/88/83/76/1000_F_188837606_JDgz5zq4uIMvXZ4gcWI1WGTkCtpRL4eU.jpg",
           "restart",
           "#f9d5e5"
         );
